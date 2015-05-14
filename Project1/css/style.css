@@ -1,0 +1,184 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+
+.clear:before,
+.clear:after {
+  content: "";
+  display: table;
+}
+.clear:after {
+  clear: both;
+}
+.clear {
+  clear: both;
+  *zoom: 1;
+}
+
+/*
+  ========================================
+  Box sizing reset
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*
+  ========================================
+  Main Content
+  ========================================
+*/
+
+body {
+  background: #eeeeee;
+  font-family: Arial, sans-serif;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px 0;
+  position: relative;
+}
+
+ul {
+  background: #ffffff;
+  cursor: default;
+  font-size: 22px;
+  font-weight: bold;
+  height: 60px;
+  line-height: 28px;
+  margin-left: 5%;
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  width: 60px;
+}
+ul li {
+  border: 1px solid #dddddd;
+  -webkit-box-shadow: inset 0px 0px 8px 0px rgba(115, 149, 255, 0.5);
+  -moz-box-shadow:    inset 0px 0px 8px 0px rgba(115, 149, 255, 0.5);
+  box-shadow:         inset 0px 0px 8px 0px rgba(115, 149, 255, 0.5);
+  display: inline-block;
+  height: 50%;
+  width: 50%;
+}
+
+.selecta {
+  background: #73959d;
+  color: #ffffff;
+}
+
+#calc-display,
+.cont,
+.calcctrl {
+  display: block;
+  font-size: 18px;
+  margin: 0 auto;
+  width: 60%;
+}
+
+#calc-display {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0px 0px 10px 0px rgba(115, 149, 255, 0.75);
+  -moz-box-shadow:    inset 0px 0px 10px 0px rgba(115, 149, 255, 0.75);
+  box-shadow:         inset 0px 0px 10px 0px rgba(115, 149, 255, 0.75);
+  font-size: 28px;
+  height: 60px;
+  line-height: 40px;
+  margin: 0 5% 0 15%;
+  padding: 10px;
+  text-align: right;
+  width: 80%;
+}
+
+.cont > div,
+.calcctrl > div {
+  background: #efefef;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  transition: all ease 0.2s;
+  vertical-align: middle;
+  width: 33.333%;
+}
+.cont > div:nth-last-child(2) {
+  width: 66.666%;
+}
+.cont > div:last-child {
+  width: 33.333%;
+}
+.cont > div:hover,
+.calcctrl > div:hover {
+  background: #ffffff;
+  border-color: #7395ff;
+  -webkit-box-shadow: inset 0px 0px 10px 0px rgba(115, 149, 255, 0.75);
+  -moz-box-shadow:    inset 0px 0px 10px 0px rgba(115, 149, 255, 0.75);
+  box-shadow:         inset 0px 0px 10px 0px rgba(115, 149, 255, 0.75);
+  color: #38565d;
+}
+
+.calcctrl > div {
+  height: 50px;
+  line-height: 50px;
+  width: 24.999%;
+}
+.calcctrl > div:nth-last-child(1),
+.calcctrl > div:nth-last-child(2) {
+  width: 49.999%;
+}
