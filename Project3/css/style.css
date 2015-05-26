@@ -1,0 +1,206 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+
+.clear:before,
+.clear:after {
+  content: "";
+  display: table;
+}
+.clear:after {
+  clear: both;
+}
+.clear {
+  clear: both;
+  *zoom: 1;
+}
+
+/*
+  ========================================
+  Box sizing reset
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*
+  ========================================
+  Main Content
+  ========================================
+*/
+
+body {
+  background: #fff;
+  color: #666;
+  font-family: Arial, sans-serif;
+  line-height: 1.5em;
+  margin: 0 auto;
+  max-width: 1020px;
+}
+
+#game-info {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 20px;
+}
+
+*[class^='col-'] {
+  float: left;
+}
+.col-20 {
+  width: 20%;
+}
+.col-60 {
+  width: 60%;
+}
+
+.logo {
+  font-size: 10px;
+  padding-right: 10px;
+  position: relative;
+}
+.logo input {
+  margin: 0;
+}
+
+.main-info {
+  border: 1px solid #ddd;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+}
+.main-info span {
+  border-top: 1px solid #eee;
+  display: block;
+  font-size: 14px;
+}
+
+.new-game input {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  float: right;
+  padding: 10px;
+  width: 90%;
+}
+.new-game input:hover {
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+#board {
+  margin: 10px auto;
+  transition: opacity ease 0.5s;
+  width: 400px;
+}
+
+div.gameover {
+  opacity: 0.5;
+}
+.gameover-2 {
+  color: #f00;
+}
+
+.field {
+  background: url('../img/grass.png');
+  display: inline-block;
+  float: left;
+}
+.field-10 div {
+  height: 40px;
+  width: 40px;
+}
+.field-15 div {
+  height: 26.6666px;
+  width: 26.6666px;
+}
+.field-20 div {
+  height: 20px;
+  width: 20px;
+}
+.field-30 div {
+  height: 13.3333px;
+  width: 13.3333px;
+}
+
+.snake-head.go-l {
+  background: url('../img/head-l.png') no-repeat, url('../img/grass.png');
+  background-size: 100%;
+}
+.snake-head.go-u {
+  background: url('../img/head-u.png') no-repeat, url('../img/grass.png');
+  background-size: 100%;
+}
+.snake-head.go-r {
+  background: url('../img/head-r.png') no-repeat, url('../img/grass.png');
+  background-size: 100%;
+}
+.snake-head.go-d {
+  background: url('../img/head-d.png') no-repeat, url('../img/grass.png');
+  background-size: 100%;
+}
+
+.snake-tail {
+  background: url('../img/tail.png') no-repeat, url('../img/grass.png');
+  background-size: 100%;
+}
+
+.food {
+  background: url('../img/burger.gif') no-repeat, url('../img/grass.png');
+  background-size: contain;
+}
+
