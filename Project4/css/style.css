@@ -79,3 +79,125 @@ table {
   Main Content
   ========================================
 */
+
+h1 {
+  border: 1px solid #ddd;
+  color: #666;
+  font-size: 20px;
+  font-family: Lato, Arial, sans-serif;
+  line-height: 25px;
+  padding: 20px 0 25px 0;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#so-simple-slider {
+  background: #fff;
+  display: block;
+  margin: 10px auto;
+  max-width: 960px;
+}
+
+#sss-frame {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 5px #eee;
+  display: block;
+  height: 382px;
+  margin: 0 auto;
+  position: relative;
+  width: 337px;
+}
+
+#sss-preview-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  top: 38%;
+  width: 150px;
+}
+
+#sss-images img,
+#sss-frame div:not(:first-of-type) {
+  position: absolute;
+}
+
+#sss-images img {
+  display: none;
+}
+
+#sss-left,
+#sss-right {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  bottom: 25%;
+  color: #ccc;
+  display: block;
+  font-size: 60px;
+  height: 100px;
+  line-height: 85px;
+  text-align: center;
+  transition: all ease 0.3s;
+  width: 40px;
+  z-index: 1000;
+}
+#sss-left {
+  border-right: 1px solid #ddd;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  left: 0;
+}
+#sss-left:after {
+  content: '\2039';
+}
+#sss-right {
+  border-left: 1px solid #ddd;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  right: 0;
+}
+#sss-right:after {
+  content: '\203A';
+}
+#sss-left:hover,
+#sss-right:hover {
+  border-color: #aaa;
+  color: #aaa;
+  cursor: pointer;
+}
+
+#sss-ctrl {
+  background: #fff;
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+#sss-ctrl ul {
+  border: 1px solid #eee;
+  margin: 0 auto;
+  width: 337px;
+}
+#sss-ctrl ul li {
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  height: 15px;
+  margin: 0 2px;
+  width: 15px;
+}
+#sss-ctrl ul li.selected:after {
+  color: #666;
+  content: '\2022';
+  font-size: 38px;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 7px;
+}
