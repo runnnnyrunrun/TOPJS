@@ -1,0 +1,231 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+
+.clear:before,
+.clear:after {
+  content: "";
+  display: table;
+}
+.clear:after {
+  clear: both;
+}
+.clear {
+  clear: both;
+  *zoom: 1;
+}
+
+/*
+  ========================================
+  Box sizing reset
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*
+  ========================================
+  Main Content
+  ========================================
+*/
+
+h1 {
+  border: 1px solid #ddd;
+  color: #666;
+  font-size: 20px;
+  font-family: Lato, Arial, sans-serif;
+  line-height: 25px;
+  padding: 20px 0 25px 0;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#so-simple-carousel {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 5px #eee;
+  display: block;
+  height: 322px;
+  margin: 10px auto;
+  max-width: 642px;
+  overflow: visible;
+  position: relative;
+}
+
+#ssc-frame {
+  display: block;
+  height: inherit;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#ssc-preview-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  top: 38%;
+  width: 150px;
+}
+
+#ssc-images {
+  clear: both;
+  left: 0px;
+  overflow-x: hidden;
+  position: absolute;
+  width: 300%;
+  *zoom: 1;
+}
+#ssc-images:before,
+#ssc-images:after {
+  content: "";
+  display: table;
+}
+#ssc-images:after {
+  clear: both;
+}
+
+#ssc-images img {
+  float: left;
+  left: 0;
+  position: relative;
+}
+
+#ssc-frame div:not(:first-of-type) {
+  position: absolute;
+}
+
+#ssc-left,
+#ssc-right {
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid #999;
+  border-top: 1px solid #999;
+  bottom: 25%;
+  color: #fff;
+  display: block;
+  font-size: 60px;
+  height: 120px;
+  line-height: 105px;
+  text-align: center;
+  transition: all ease 0.3s;
+  width: 40px;
+  z-index: 1000;
+}
+#ssc-left {
+  border-right: 1px solid #999;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  left: 0;
+}
+#ssc-left:after {
+  content: '\2039';
+}
+#ssc-right {
+  border-left: 1px solid #999;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  right: 0;
+}
+#ssc-right:after {
+  content: '\203A';
+}
+#ssc-left:hover,
+#ssc-right:hover {
+  background: rgba(0,0,0,0.4);
+  border-color: #fff;
+  cursor: pointer;
+}
+
+#ssc-ctrl {
+  background: #fff;
+  display: block;
+  padding: 5px;
+  text-align: center;
+}
+#ssc-ctrl ul {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 5px;
+  width: auto;
+}
+#ssc-ctrl ul li {
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  margin: 0 3px;
+  width: 20px;
+  vertical-align: top;
+}
+#ssc-ctrl ul li:hover {
+  border: 1px solid #888;
+}
+#ssc-ctrl ul li.selected:after {
+  color: #888;
+  content: '\2022';
+  display: block;
+  font-size: 40px;
+  left: 0px;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 9px;
+}

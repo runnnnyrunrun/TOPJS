@@ -11,14 +11,15 @@ $(document).ready(function () {
     var MS_INTERVAL;
     
     // VARIABLES
-    var allImages = $('#sss-images img'),
+    var allImages = $('#ssc-images img'),
         allCtrlDots,
         currentImage,
+        currentWidth,
         i,
         imgInterval,
         listItem,
         nextImage,
-        previewBox = $('<img src="" id="sss-preview-box" />');
+        previewBox = $('<img src="" id="ssc-preview-box" />');
     
     // FUNCTIONS
     var clearPreview,
@@ -29,18 +30,31 @@ $(document).ready(function () {
         previewNext,
         previewPrevious,
         previous,
-        setSelectedCtrlDot,
-        showImage;
+        setSelectedCtrlDot;
     
     next = function () {
-      currentImage = ((currentImage + 1 === allImages.length) ? 0 : currentImage + 1);
-      showImage(currentImage);
+      if (currentImage === allImages.length - 1) {
+        currentWidth = $('#ssc-images').width();
+        $('#ssc-images').animate({left: 0}, 500);
+      } else {
+        currentWidth = allImages.eq(currentImage).width();
+        $('#ssc-images').animate({left: '-=' + currentWidth}, 500);
+      }
+      currentImage = ((currentImage === allImages.length - 1) ? 0 : currentImage + 1);
+      previewBox.fadeOut(500);
       setSelectedCtrlDot(currentImage);
     };
     
     previous = function () {
+      if (currentImage === 0) {
+        currentWidth = $('#ssc-images').width();
+        $('#ssc-images').animate({left: '-' + (currentWidth - 640)}, 500);
+      } else {
+        currentWidth = allImages.eq(currentImage).width();
+        $('#ssc-images').animate({left: '+=' + currentWidth}, 500);
+      }
       currentImage = ((currentImage === 0) ? allImages.length - 1 : currentImage - 1);
-      showImage(currentImage);
+      previewBox.fadeOut(500);
       setSelectedCtrlDot(currentImage);
     };
     
@@ -57,7 +71,7 @@ $(document).ready(function () {
           'left': '',
           'right': '-160px'
         }).stop(true).fadeIn(500);
-        $('#sss-frame').append(previewBox);
+        $('#so-simple-carousel').append(previewBox);
       }
     };
     
@@ -70,7 +84,7 @@ $(document).ready(function () {
           'left': '-160px',
           'right': ''
         }).stop(true).fadeIn(500);
-        $('#sss-frame').prepend(previewBox);
+        $('#so-simple-carousel').prepend(previewBox);
       }
     };
     
@@ -80,23 +94,19 @@ $(document).ready(function () {
     };
     
     goToAny = function (e) {
-      currentImage = $(e.target).index();
-      showImage(currentImage);
-      setSelectedCtrlDot(currentImage);
+      if (currentImage !== $(e.target).index()) {
+        currentImage = $(e.target).index();
+        $('#ssc-images').animate({left: '-' + (640 * currentImage)}, 500);
+        setSelectedCtrlDot(currentImage);
+      }
     };
     
     populateCtrl = function (ci) {
       for (i = 0; i < allImages.length; i++) {
         listItem = '<li class=""></li>';
-        $('#sss-ctrl ul').append(listItem);
+        $('#ssc-ctrl ul').append(listItem);
       }
-      allCtrlDots = $('#sss-ctrl ul li');
-    };
-    
-    showImage = function (ci) {
-      allImages.fadeOut(500);
-      previewBox.fadeOut(500);
-      allImages.eq(ci).fadeIn(1000);
+      allCtrlDots = $('#ssc-ctrl ul li');
     };
     
     setSelectedCtrlDot = function (dotNumber) {
@@ -105,16 +115,15 @@ $(document).ready(function () {
     };
     
     // INIT FUNCTION
-    var initialize = function (initialImage, sec) {
-      currentImage = initialImage;
-      MS_INTERVAL = sec;
+    var initialize = function (options) {
+      currentImage = options.initialImg - 1 || 0;
+      MS_INTERVAL = options.delay || 5000;
       
       populateCtrl(currentImage);
       setSelectedCtrlDot(currentImage);
-      showImage(currentImage);
-      $('#sss-right').on('click', next).on('mouseenter', previewNext).on('mouseleave', clearPreview);
-      $('#sss-left').on('click', previous).on('mouseenter', previewPrevious).on('mouseleave', clearPreview);
-      $('#sss-ctrl ul').on('click', 'li', goToAny);
+      $('#ssc-right').on('click', next).on('mouseenter', previewNext).on('mouseleave', clearPreview);
+      $('#ssc-left').on('click', previous).on('mouseenter', previewPrevious).on('mouseleave', clearPreview);
+      $('#ssc-ctrl ul').on('click', 'li', goToAny);
       imgInterval = setInterval(next, MS_INTERVAL);
     };
     
@@ -123,5 +132,8 @@ $(document).ready(function () {
     };
   }());
   
-  SoSimpleSlider.init(0, 5000);
+  SoSimpleSlider.init({
+    initialImg: 1,
+    delay: 5000
+  });
 });
