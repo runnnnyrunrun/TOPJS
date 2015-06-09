@@ -81,9 +81,81 @@ table {
 */
 
 body {
-  
+  color: #666;
+  font-family: Lato, Arial, sans-serif;
+  font-size: 16px;
 }
 
+header {
+  border: 1px solid #ddd;
+  margin: 0 auto 10px;
+  max-width: 640px;
+  padding: 20px;
+}
+header p {
+  display: inline-block;
+  text-align: center;
+}
+header .left-para {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  width: 64%;
+}
+header .right-para {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 20px 5px;
+  width: 34%;
+}
+header .right-para:hover {
+  border-color: #aaa;
+}
+header .right-para:active {
+  background: #eee;
+}
 
+#fields {
+  background: #fff;
+  border-bottom: 2px solid #bbb;
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #bbb;
+  border-top: 2px solid #ddd;
+  border-radius: 5px;
+  margin: 0 auto;
+  max-width: 360px;
+  width: 100%;
+}
 
+#fields > div {
+  border: 1px solid #ddd;
+  color: transparent;
+  display: inline-block;
+  float: left;
+  font-size: 44px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  transition: all ease 0.3s;
+  width: 33.333333%;
+}
+#fields > div:hover {
+  border-color: #aaa;
+}
+#fields > div.circle-bg {
+  background: url(../img/circle.png) 50% 50% no-repeat;
+}
+#fields > div.cross-bg {
+  background: url(../img/cross.png) 50% 50% no-repeat;
+}
 
+.circle-cursor {
+  cursor: url('../img/circle.png') 25 25, pointer;
+}
+.cross-cursor {
+  cursor: url('../img/cross.png') 25 25, pointer;
+}
+
+div.other-field {
+  opacity: 0.5;
+}
