@@ -20,6 +20,7 @@ $(document).ready(function () {
     var adjacent = [[-1, -1], [-1, 0], [0, -1], [1, 1], [1, 0], [0, 1], [1, -1], [-1, 1]],
         board = [],
         currentAdjacentField,
+        currentField,
         fieldNumber,
         gameField = $('#fields'),
         randomCounter,
@@ -28,12 +29,14 @@ $(document).ready(function () {
     
     // METHODS
     var countAdjacent,
+        fieldOnBoard,
         generateBoard,
         generateBombs,
         initialize,
         isBomb,
         render,
         resetBoard,
+        reveal,
         revealEmpty;
     
     countAdjacent = function () {
@@ -47,6 +50,10 @@ $(document).ready(function () {
           }
         });
       });
+    };
+    
+    fieldOnBoard = function (x, y, v) {
+      return (x + v[0] >= 0 && x + v[0] < 9 && y + v[1] >= 0 && y + v[1] < 9);
     };
     
     generateBoard = function () {
@@ -74,8 +81,12 @@ $(document).ready(function () {
     };
     
     render = function () {
+      gameField.empty();
       $.each(board, function(i, v) {
         tempField = $('<div>').data('field-number', i);
+        if (!v.isRevealed) {
+          tempField.addClass('hidden');
+        }
         if (v.bomb) {
           tempField.text('B');
         } else if (v.minesAround > 0) {
@@ -83,6 +94,10 @@ $(document).ready(function () {
         }
         gameField.append(tempField);
       });
+    };
+    
+    reveal = function (field) {
+      board[field].isRevealed = true;
     };
     
     resetBoard = function () {
@@ -95,31 +110,57 @@ $(document).ready(function () {
       }
     };
     
-    // to nizej jako funkcja rekurencyjna, ktora odslania pola jesli nie zostaly odsloniete i jesli nie granicza z zadna bomba, a potem sprawdza odsloniete pola itd.
     revealEmpty = function (field) {
-      $.each([-10, -9, -8, -1, 1, 8, 9, 10], function(i, v) {
-
+      var x = board[field].x;
+      var y = board[field].y;
+      
+      reveal(field);
+      $.each(adjacent, function(i, v) {
+        if (fieldOnBoard(x, y, v)) {
+          var calculatedField = (x + v[0]) + (y + v[1]) * 9;
+          currentField = board[calculatedField];
+          if (!currentField.isRevealed && !currentField.bomb) {
+            if (currentField.minesAround === 0) {
+              revealEmpty(calculatedField);
+            } else {
+              reveal(calculatedField);
+            }
+          }
+        }
       });
+//      $.each([-10, -9, -8, -1, 1, 8, 9, 10], function(i, v) {
+//        currentField = board[field + v];
+//        if (field + v >= 0 && field + v < 81 && !currentField.isRevealed && !currentField.bomb) {
+//          if (currentField.minesAround === 0) {
+//            revealEmpty(field + v);
+//          } else {
+//            reveal(field + v);
+//          }
+//        }
+//      });
     };
     
     // INIT FUNCTION
     initialize = function () {
       // Generate clean board
-      
       generateBoard();
-//      gameField.on('click', 'div', function () {
-//        fieldNumber = $(this).data('field-number');
-//        if (!board[fieldNumber].bomb && board[fieldNumber].minesAround === 0) {
-//          $(this).addClass('revealed');
-//          revealEmpty(fieldNumber);
-//        } else if (board[fieldNumber].bomb) {
-//          $(this).addClass('failure');
-//        }
-//      });
-//      gameField.on('contextmenu', 'div', function (e) {
-//        e.preventDefault();
-//        
-//      });
+      // Add event listeners
+      gameField.on('click', 'div', function () {
+        $(this).removeClass('hidden');
+        fieldNumber = $(this).data('field-number');
+        if (!board[fieldNumber].bomb && board[fieldNumber].minesAround === 0) {
+          revealEmpty(fieldNumber);
+        } else if (board[fieldNumber].bomb) {
+          $(this).addClass('failure');
+        } else {
+          reveal(fieldNumber);
+        }
+        render();
+      });
+      gameField.on('contextmenu', 'div', function (e) {
+        e.preventDefault();
+        
+      });
     };
     
     return {

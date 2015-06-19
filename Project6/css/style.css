@@ -94,7 +94,7 @@ body {
 }
 
 #fields > div {
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   color: rgba(0,0,0,0.2);
   cursor: pointer;
   display: inline-block;
@@ -111,10 +111,12 @@ body {
   border-color: #999;
 }
 
-#fields > div.revealed {
-  border: 1px solid #aaa;
+#fields > div.hidden {
+  background: rgba(220,220,220,1);
+  color: rgba(220,220,220,1);
+  font-size: 0;
 }
 
 #fields > div.failure {
-  border: 1px solid #f00;
+  background: #f00;
 }
