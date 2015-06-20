@@ -163,9 +163,15 @@ $(document).ready(function () {
         if (!board[fieldNumber].bomb && board[fieldNumber].minesAround === 0) {
           revealEmpty(fieldNumber);
         } else if (board[fieldNumber].bomb) {
-          $.each(tempBombs, function(i, v) {
-            reveal(v);
-          });
+          reveal(fieldNumber);
+          for (var c = 0; c < tempBombs.length; c++) {
+            (function (index) {
+              setTimeout(function () {
+                reveal(tempBombs[index]);
+                render();
+              }, c * 100);
+            })(c);
+          }
           $('#splash').find('p').html(splashContent.lose).end().fadeIn(2000);
         } else {
           reveal(fieldNumber);
