@@ -23,6 +23,7 @@ $(document).ready(function () {
         currentField,
         fieldNumber,
         gameField = $('#fields'),
+        gameTime,
         randomCounter,
         splashScreen = $('<section id="splash" class="game-start"><p>PLAY</p></section>'),
         splashContent = {
@@ -30,7 +31,8 @@ $(document).ready(function () {
           'win': 'CONGRATULATIONS!<br>FIELD CLEARED<br>CLICK TO PLAY AGAIN'
         },
         tempBombs,
-        tempField;
+        tempField,
+        timer = 0;
     
     // METHODS
     var countAdjacent,
@@ -144,6 +146,7 @@ $(document).ready(function () {
     
     winCheck = function () {
       if (gameField.find('div.hidden').length === 10) {
+        clearInterval(gameTime);
         $('#splash').find('p').html(splashContent.win).end().fadeIn(2000);
       }
     };
@@ -154,6 +157,12 @@ $(document).ready(function () {
       generateBoard();
       // Add event listeners
       $('#fields').on('click', '#splash', function (e) {
+        timer = 0;
+        $('#timer').html('Time: ' + timer);
+        gameTime = setInterval(function() {
+          timer++;
+          $('#timer').html('Time: ' + timer);
+        }, 1000);
         generateBoard();
         $(this).fadeOut(1000);
       });
@@ -163,6 +172,7 @@ $(document).ready(function () {
         if (!board[fieldNumber].bomb && board[fieldNumber].minesAround === 0) {
           revealEmpty(fieldNumber);
         } else if (board[fieldNumber].bomb) {
+          clearInterval(gameTime);
           reveal(fieldNumber);
           for (var c = 0; c < tempBombs.length; c++) {
             (function (index) {

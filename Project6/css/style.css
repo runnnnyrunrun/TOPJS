@@ -85,37 +85,55 @@ body {
   font-family: Lato, Arial, sans-serif;
   font-size: 16px;
 }
+
+header {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 0px #ccc inset;
+  color: #aaa;
+  margin: 0 auto;
+  max-width: 300px;
+  padding: 20px;
+}
+
+header #timer {
+  font-size: 28px;
+  text-align: center;
+  width: 100%;
+}
+
 #fields {
   background: #fff;
   border-radius: 5px;
+  box-shadow: 0 0 20px 0px #ccc inset;
   margin: 0 auto;
   max-width: 300px;
-  outline: 1px solid #ddd;
   position: relative;
   width: 100%;
 }
 #splash {
-  border: 1px solid #999;
   border-radius: 5px;
+  box-shadow: 0 0 20px 0px #ccc inset;
   color: #999;
   cursor: pointer;
   height: 100%;
   max-width: 300px;
   position: absolute;
   text-align: center;
+  transition: box-shadow ease 0.3s;
   width: 100%;
 }
 #splash > p {
   font-size: 18px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   position: absolute;
   width: 100%;
 }
 #splash.game-start {
   background: url('../img/microminesweeper.png') no-repeat center, #fff;
 }
-#splash.game-start:hover {
-  border: 1px solid #000;
+#splash:hover {
+  box-shadow: 0 0 20px 0px #bbb inset;
   color: #000;
 }
 #splash.game-start > p {
@@ -144,6 +162,7 @@ body {
 #fields > div.hidden {
   background: url('../img/minefield.jpg') no-repeat;
   background-size: cover;
+  box-shadow: 0 0 5px 0px #fff inset;
   color: rgba(220,220,220,1);
   font-size: 0;
 }
