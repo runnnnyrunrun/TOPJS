@@ -1,6 +1,5 @@
-# Project 6 - Minesweeper
+# Project 7 - jQuery Form Validation
 
 ### TODO
-  - store the best time in local storage
-  - add possibility to select difficulty
-  - preload all images in browser cache
+  - save the cheerleader
+  - save the world
