@@ -41,6 +41,10 @@ table {
     border-spacing: 0;
 }
 
+strong {
+  font-weight: bold;
+}
+
 /*
   ========================================
   Clearfix
@@ -81,9 +85,139 @@ table {
 */
 
 body {
+  background: #fff;
   color: #666;
-  font-family: Lato, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
+}
+
+section {
+  margin-top: 10px;
+}
+
+section > div {
+  color: #4a5e82;
+  cursor: default;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 auto;
+  max-width: 480px;
+  padding: 20px 30px;
+  position: relative;
+}
+section > div:after {
+  background: #fff;
+  box-shadow: 0px 2px 3px -2px #4a5e82;
+  bottom: 14px;
+  content: '';
+  display: block;
+  height: 24px;
+  left: 30px;
+  position: absolute;
+  transition: all ease 0.5s;
+  width: 88px;
+  z-index: -1;
+}
+section > div:hover:after {
+  left: 0;
+  width: 118px;
+}
+
+form {
+  background: #fff;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  box-shadow: 0px 3px 4px -1px #4a5e82;
+  margin: 0 auto;
+  max-width: 480px;
+  padding: 20px 30px;
+}
+
+form fieldset {
+  padding: 5px 0;
+}
+form fieldset > div {
+  color: #f00;
+  font-size: 12px;
+  height: 16px;
+  line-height: 16px;
+  margin-left: 29%;
+  padding-top: 2px;
+  width: 71%;
+}
+
+form input {
+  background: #fff;
+  border: 0;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  box-shadow: 0px 1px 2px -1px #8ea7c2;
+  color: #666;
+  font-size: 14px;
+  padding: 10px;
+  position: relative;
+  transition: all ease 0.3s;
+  width: 71%;
+}
+form input.correct {
+  background-color: rgba(184,204,166, 0.3);
+}
+form input.error {
+  background-color: rgba(204,167,166, 0.3);
+}
+form input:focus {
+  box-shadow: 0px 2px 2px -1px #4a5e82;
+  outline: 0;
+}
+
+form label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  padding-right: 15px;
+  position: relative;
+  text-align: right;
+  width: 29%;
+  vertical-align: middle;
+}
+
+.submit-button {
+  background: rgba(74,94,130,0.1);
+  border: 0;
+  box-shadow: 0px 3px 4px -1px #4a5e82;
+  color: #4a5e82;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 20px 10px;
+  transition: all ease 0.3s;
+  width: 100%;
+}
+.submit-button:disabled {
+  box-shadow: 0px 0px 1px 0px #666;
+  color: #ccc;
+  cursor: default;
+}
+.submit-button:enabled:hover {
+  background: rgba(74,94,130,0.15);
+  box-shadow: 0px 1px 4px -1px #4a5e82;
+}
+
+@media screen and (max-width: 480px) {
+  form label {
+    display: none;
+  }
+  form input {
+    box-shadow: 0px 1px 2px -1px #8ea7c2;
+    color: #666;
+    font-size: 16px;
+    padding: 15px;
+    width: 100%;
+  }
+  form fieldset > div {
+    margin-left: 0%;
+    width: 100%;
+  }
 }
 
 

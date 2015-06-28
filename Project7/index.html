@@ -5,11 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TOP - JS Project 7 - Javascript Callbacks</title>
+    <title>TOP - JS Project 7 - jQuery Form Validation</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <section>
+      <div>Sign up</div>
+      <form id="sign-up-form">
+        <fieldset>
+          <label for="user-name"><strong>Full Name:</strong></label><!--
+          --><input type="text" placeholder="Enter Your Full Name" id="user-name" required maxlength="100" class="error">
+          <div>*This field is required</div>
+        </fieldset>
+        <fieldset>
+          <label for="user-pass"><strong>Password:</strong></label><!--
+          --><input type="password" placeholder="Enter Desired Password" id="user-pass" required class="error">
+          <div>*This field is required</div>
+        </fieldset>
+        <fieldset>
+          <label for="user-pass-conf"><strong>Re-enter Password:</strong></label><!--
+          --><input type="password" placeholder="Re-enter Your Password" id="user-pass-conf" required class="error">
+          <div>*This field is required</div>
+        </fieldset>
+        <fieldset>
+          <label for="user-email"><strong>E-mail:</strong></label><!--
+          --><input type="email" placeholder="Enter Your E-mail Address" id="user-email" required maxlength="50" class="error">
+          <div>*This field is required</div>
+        </fieldset>
+        <fieldset>
+          <label for="user-email-conf"><strong>Re-enter E-mail:</strong></label><!--
+          --><input type="email" placeholder="Re-enter Your E-mail Address" id="user-email-conf" required maxlength="50" class="error">
+          <div>*This field is required</div>
+        </fieldset>
+        <fieldset>
+          <label for="user-phone">Phone:</label><!--
+          --><input type="tel" placeholder="Your Phone Number" id="user-phone" maxlength="20">
+          <div></div>
+        </fieldset>
+        <fieldset>
+          <label for="user-zipcode">Zip-code:</label><!--
+          --><input type="text" placeholder="Zip-code" id="user-zipcode">
+          <div></div>
+        </fieldset>
+        <input type="button" class="submit-button" value="Register" disabled>
+      </form>
+    </section>
     
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
