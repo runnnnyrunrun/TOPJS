@@ -92,8 +92,38 @@ body {
 }
 
 section {
-  margin-top: 10px;
+  padding: 30px 0;
+  width: 100%;
 }
+
+section > div {
+  border: 1px solid #eee;
+  padding: 20px;
+  width: 100%;
+}
+section > div > h4 {
+  background: #666;
+  border-top: 3px dashed #333;
+  color: #eee;
+  font-size: 22px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+section > div > h5 {
+  color: #aaa;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+section > div > p {
+  font-size: 12px;
+}
+div.loader {
+  background: url(../img/ajax-loader.gif) center no-repeat, #ddd; 
+  height: 100px;
+}
+
+
+
 
 
 
