@@ -8,6 +8,7 @@ $(document).ready(function () {
     
     // VARIABLES
     var distanceMeter = $('#distance > span'),
+        infowindow,
         map = document.getElementById('googleMap'),
         mapObj,
         mapProp,
@@ -15,6 +16,7 @@ $(document).ready(function () {
         oldLat,
         oldLong,
         path = [],
+        pathIndex,
         pathLine,
         totalDistance = 0,
         zoom = 15;
@@ -27,6 +29,27 @@ $(document).ready(function () {
         map: mapObj,
         title: coords.toString()
       });
+      
+      google.maps.event.addListener(tempMarker, 'rightclick', function (e) {
+        pathIndex = path.indexOf(e.latLng);
+
+        if (pathIndex !== -1) {
+          path.splice(pathIndex, 1);
+          markers[pathIndex].setMap(null);
+          markers.splice(pathIndex, 1);
+        }
+
+        drawPath(path);
+        countDistance(path);
+      });
+      
+      google.maps.event.addListener(tempMarker, 'click', function (e) {
+        infowindow = new google.maps.InfoWindow({
+          content: this.title
+        });
+        infowindow.open(mapObj, this);
+      });
+      
       markers.push(tempMarker);
     };
     
@@ -96,28 +119,12 @@ $(document).ready(function () {
       mapObj = new google.maps.Map(map, mapProp);
       
       google.maps.event.addListener(mapObj, 'click', function (e) {
-        var pathIndex = path.indexOf(e.latLng);
+        pathIndex = path.indexOf(e.latLng);
         
         if (pathIndex === -1) {
           setMarker(e.latLng);
           path.push(e.latLng);
         }
-        
-        markers.forEach(function (n) {
-          google.maps.event.clearListeners(n, 'click');
-          google.maps.event.addListener(n, 'click', function (e) {
-            pathIndex = path.indexOf(e.latLng);
-            
-            if (pathIndex !== -1) {
-              path.splice(pathIndex, 1);
-              markers[pathIndex].setMap(null);
-              markers.splice(pathIndex, 1);
-            }
-            
-            drawPath(path);
-            countDistance(path);
-          });
-        });
         
         drawPath(path);
         countDistance(path);
@@ -131,12 +138,6 @@ $(document).ready(function () {
         markers = [];
         drawPath(path);
         countDistance(path);
-      });
-      
-      $('#savePath').on('click', function () {
-        if (path.length > 0) {
-          
-        }
       });
       
       drawPath(path);
