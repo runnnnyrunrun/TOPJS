@@ -91,6 +91,7 @@ body {
 
 #googleMap {
   height: 320px;
+  margin-top: 15px;
 }
 #googleMap > div > div > div {
   cursor: pointer;
